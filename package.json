@@ -1,0 +1,27 @@
+{
+  "name": "biirus.github.io",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Ivan Burnaev's personal website",
+  "scripts": {
+    "build:client": "stencil build",
+    "build": "echo 1 && exit 0",
+    "start:server": "stencil build --dev --watch --serve",
+    "start:client": "cd ./server && npm start",
+    "start": "npm-run-all --parallel start:*",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "generate": "stencil generate"
+  },
+  "devDependencies": {
+    "@stencil/core": "^1.12.4",
+    "@stencil/eslint-plugin": "^0.3.1",
+    "@stencil/router": "^1.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.28.0",
+    "@typescript-eslint/parser": "^2.28.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.19.0",
+    "npm-run-all": "^4.1.5"
+  },
+  "license": "MIT"
+}
