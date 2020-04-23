@@ -4,12 +4,13 @@
   "version": "0.0.1",
   "description": "Ivan Burnaev's personal website",
   "scripts": {
-    "build:client": "stencil build",
-    "build": "echo 1 && exit 0",
-    "start:server": "stencil build --dev --watch --serve",
-    "start:client": "cd ./server && npm start",
+    "build:client": "stencil build --prerender",
+    "build": "bash ./scripts/build.sh",
+    "start:client": "stencil build --dev --watch --serve",
+    "start:server": "cd ./server && npm start",
     "start": "npm-run-all --parallel start:*",
-    "test": "stencil test --spec --e2e",
+    "test:client": "stencil test --spec --e2e",
+    "test": "exit 0",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
   },

@@ -13,10 +13,14 @@ const getStats = (filePath) => ({
   filePath,
 });
 
-const getFileUrl = (filePath) =>
-  path
-    .relative(path.join(process.cwd(), process.env.PAGES_SRC), filePath)
-    .replace('.md', '');
+const getFileUrl = (filePath) => {
+  return (
+    '/' +
+    path
+      .relative(path.join(process.cwd(), process.env.PAGES_SRC), filePath)
+      .replace('.md', '')
+  );
+};
 
 const sortByDate = (fileA, fileB) => {
   // dir always goes last
