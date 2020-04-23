@@ -6,13 +6,15 @@
   "scripts": {
     "build:client": "stencil build --prerender",
     "build": "bash ./scripts/build.sh",
-    "start:client": "stencil build --dev --watch --serve",
     "start:server": "cd ./server && npm start",
-    "start": "npm-run-all --parallel start:*",
+    "dev:client": "stencil build --dev --watch --serve",
+    "dev:server": "cd ./server && npm run dev",
+    "dev": "npm-run-all --parallel dev:*",
     "test:client": "stencil test --spec --e2e",
     "test": "exit 0",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "postinstall": "cd ./server && npm install"
   },
   "devDependencies": {
     "@stencil/core": "^1.12.4",
