@@ -5,7 +5,8 @@
   "description": "Ivan Burnaev's personal website",
   "scripts": {
     "build:client": "stencil build --prerender",
-    "build": "bash ./scripts/build.sh",
+    "build.old": "bash ./scripts/build.sh",
+    "build": "npm run start:server & npm run build:client",
     "start:server": "cd ./server && npm start",
     "dev:client": "stencil build --dev --watch --serve",
     "dev:server": "cd ./server && npm run dev",
