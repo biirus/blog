@@ -5,15 +5,14 @@
   "description": "Ivan Burnaev's personal website",
   "scripts": {
     "build:client": "stencil build --prerender",
-    "build.old": "bash ./scripts/build.sh",
-    "build": "npm run start:server & npm run build:client",
+    "build": "bash ./scripts/build.sh",
     "start:server": "cd ./server && npm start",
     "dev:client": "stencil build --dev --watch --serve",
     "dev:server": "cd ./server && npm run dev",
     "dev": "npm-run-all --parallel dev:*",
     "test:client": "stencil test --spec --e2e",
+    "test:watch": "stencil test --spec --e2e --watchAll",
     "test": "exit 0",
-    "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "postinstall": "cd ./server && npm install"
   },

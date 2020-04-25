@@ -17,7 +17,7 @@ marked.setOptions({
 });
 
 renderer.image = (href, title, alt) =>
-  `<app-img title="${title}" alt="${alt}" url="${href}></app-img>`;
+  `<img title="${title}" alt="${alt}" src="${href}"/>`;
 
 function getPage(pagePath) {
   const parsed = getFileInfo(
@@ -41,7 +41,7 @@ function handlePageRequest(req, res) {
     return res.json(page);
   }
 
-  return res.status(404).send();
+  return res.status(404).json(null);
 }
 
 module.exports = handlePageRequest;

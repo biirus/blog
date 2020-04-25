@@ -1,9 +1,9 @@
-import { Component, Prop, h } from "@stencil/core";
-import { MatchResults } from "@stencil/router";
+import { Component, Prop, h } from '@stencil/core';
+import { MatchResults } from '@stencil/router';
 
 @Component({
-  tag: "app-profile",
-  styleUrl: "app-profile.css",
+  tag: 'app-profile',
+  styleUrl: 'app-profile.css',
   shadow: true,
 })
 export class AppProfile {
@@ -13,7 +13,7 @@ export class AppProfile {
     if (name) {
       return name.substr(0, 1).toUpperCase() + name.substr(1).toLowerCase();
     }
-    return "";
+    return '';
   }
 
   render() {

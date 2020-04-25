@@ -12,6 +12,10 @@ export namespace Components {
     interface AppNav {
     }
     interface AppPage {
+        /**
+          * Language and Page url come here
+         */
+        "match": MatchResults;
     }
     interface AppProfile {
         "match": MatchResults;
@@ -64,6 +68,10 @@ declare namespace LocalJSX {
     interface AppNav {
     }
     interface AppPage {
+        /**
+          * Language and Page url come here
+         */
+        "match"?: MatchResults;
     }
     interface AppProfile {
         "match"?: MatchResults;

@@ -1,22 +1,5 @@
 import { Component, Host, h, State } from '@stencil/core';
 
-type File = {
-  date: string;
-  title: string;
-  url: string;
-  tags: string[];
-};
-
-type Info = {
-  title: string;
-};
-
-type Dir = {
-  files: Array<File | Dir>;
-  isDir: boolean;
-  info: Info;
-};
-
 @Component({
   tag: 'app-nav',
   styleUrl: 'app-nav.css',
