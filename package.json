@@ -6,7 +6,7 @@
   "scripts": {
     "build:client": "stencil build --prerender",
     "prerender": "bash ./scripts/build.sh",
-    "start": "cd ./server && npm start",
+    "start": "NODE_ENV=production node server/index.js",
     "dev:client": "stencil build --dev --watch --serve",
     "dev:server": "cd ./server && npm run dev",
     "dev": "npm-run-all --parallel dev:*",

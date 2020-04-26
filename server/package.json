@@ -5,7 +5,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=production node index.js",
     "dev": "NODE_ENV=development nodemon index.js --watch ./",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
