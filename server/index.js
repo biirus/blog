@@ -8,6 +8,7 @@ const page = require('./api/page');
 const app = express();
 app.use(cors());
 app.use(compression());
+app.use(express.static('../www'));
 
 app.get('/api/navigation', navigation);
 app.get('/api/page', page);
