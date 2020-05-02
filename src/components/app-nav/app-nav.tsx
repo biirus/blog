@@ -1,4 +1,4 @@
-import { Component, Host, h, State } from '@stencil/core';
+import { Component, Host, h, State, Build } from '@stencil/core';
 
 @Component({
   tag: 'app-nav',
@@ -9,7 +9,11 @@ export class AppNav {
   @State() pages: Dir;
 
   async componentWillLoad() {
-    const response = await fetch('http://localhost:8080/api/navigation');
+    const response = await fetch(
+      `${
+        Build.isBrowser ? process.env.API_HOST : 'http://localhost:8080'
+      }/api/navigation`
+    );
     this.pages = await response.json();
   }
 

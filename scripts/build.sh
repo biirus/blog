@@ -3,7 +3,7 @@
 trap "exit" INT TERM ERR
 trap "kill 0" EXIT
 
-npm run start:server &
+cd server && npm run start &
 SERVER_PID=$!
-npm run build:client
+npm run build
 kill -9 ${SERVER_PID}

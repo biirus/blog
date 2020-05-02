@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h, Watch, State } from '@stencil/core';
+import { Component, Host, Prop, h, Watch, State, Build } from '@stencil/core';
 import { MatchResults } from '@stencil/router';
 
 @Component({
@@ -27,7 +27,9 @@ export class AppPage {
   private async fetchPage(url: string) {
     if (typeof url !== 'undefined') {
       const response = await fetch(
-        `http://localhost:8080/api/page?path=${url}`
+        `${
+          Build.isBrowser ? process.env.API_HOST : 'http://localhost:8080'
+        }/api/page?path=${url}`
       );
       this.page = await response.json();
     }
