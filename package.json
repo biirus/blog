@@ -10,6 +10,7 @@
     "dev:client": "stencil build --dev --watch --serve",
     "dev:server": "cd ./server && npm run dev",
     "dev": "npm-run-all --parallel dev:*",
+    "deploy": "git subtree push --prefix server heroku master",
     "test:client": "stencil test --spec --e2e",
     "test:watch": "stencil test --spec --e2e --watchAll",
     "test": "exit 0",
