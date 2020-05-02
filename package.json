@@ -4,11 +4,12 @@
   "version": "0.0.1",
   "description": "Ivan Burnaev's personal website",
   "scripts": {
-    "build": "NODE_ENV=production stencil build --prerender",
-    "prerender": "bash ./scripts/build.sh",
+    "build:client": "NODE_ENV=production stencil build --prerender",
+    "build": "bash ./scripts/build.sh",
     "dev:client": "stencil build --dev --watch --serve",
     "dev:server": "cd ./server && npm run dev",
     "dev": "NODE_ENV=development npm-run-all --parallel dev:*",
+    "predeploy": "npm run build && git add . && git commit -m 'deploy'",
     "deploy": "git subtree push --prefix server heroku master",
     "test:client": "stencil test --spec --e2e",
     "test:watch": "stencil test --spec --e2e --watchAll",
@@ -28,5 +29,8 @@
     "npm-run-all": "^4.1.5",
     "rollup-plugin-dotenv": "^0.2.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@stencil/helmet": "^0.3.1"
+  }
 }

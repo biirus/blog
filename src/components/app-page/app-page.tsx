@@ -1,5 +1,7 @@
-import { Component, Host, Prop, h, Watch, State, Build } from '@stencil/core';
+import { Component, Host, Prop, h, Watch, State } from '@stencil/core';
+import Helmet from '@stencil/helmet';
 import { MatchResults } from '@stencil/router';
+import { getApiHost } from '../../utils/config';
 
 @Component({
   tag: 'app-page',
@@ -26,11 +28,7 @@ export class AppPage {
 
   private async fetchPage(url: string) {
     if (typeof url !== 'undefined') {
-      const response = await fetch(
-        `${
-          Build.isBrowser ? process.env.API_HOST : 'http://localhost:8080'
-        }/api/page?path=${url}`
-      );
+      const response = await fetch(`${getApiHost()}/api/page?path=${url}`);
       this.page = await response.json();
     }
   }
@@ -42,6 +40,9 @@ export class AppPage {
 
     return (
       <Host>
+        <Helmet>
+          <title>{this.page.meta.data.title}</title>
+        </Helmet>
         <h1>{this.page.meta.data.title}</h1>
         <div innerHTML={this.page.content}></div>
       </Host>

@@ -6,7 +6,7 @@ const navigation = require('./api/navigation');
 const page = require('./api/page');
 
 const app = express();
-app.use(cors());
+process.env.NODE_ENV === 'development' && app.use(cors());
 app.use(compression());
 app.use(express.static('./www'));
 
