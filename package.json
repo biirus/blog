@@ -2,6 +2,7 @@
   "name": "biirus.github.io",
   "private": true,
   "version": "0.0.1",
+  "license": "MIT",
   "description": "Ivan Burnaev's personal website",
   "scripts": {
     "clean": "rm -rf ./server/www && rm -rf ./src/www",
@@ -25,9 +26,25 @@
     "@typescript-eslint/parser": "^2.28.0",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.19.0",
+    "husky": "^4.2.5",
     "npm-run-all": "^4.1.5",
+    "prettier": "^2.0.5",
     "rollup-plugin-dotenv": "^0.2.0",
     "sharp": "^0.25.2"
   },
-  "license": "MIT"
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "server/**/*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
 }
