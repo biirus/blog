@@ -1,7 +1,7 @@
 import { Component, Host, Prop, h, Watch, State } from '@stencil/core';
-import Helmet from '@stencil/helmet';
 import { MatchResults } from '@stencil/router';
 import { getApiHost } from '../../utils/config';
+import { helmet } from '../../utils/helmet';
 
 @Component({
   tag: 'app-page',
@@ -19,17 +19,23 @@ export class AppPage {
 
   @Watch('match')
   matchWatcher() {
-    this.fetchPage(this.match.url);
+    this.fetchPage(this.match?.url);
   }
 
   async componentWillLoad() {
-    await this.fetchPage(this.match.url);
+    await this.fetchPage(this.match?.url);
   }
 
   private async fetchPage(url: string) {
-    if (typeof url !== 'undefined') {
+    if (typeof url !== 'undefined' && url.length > 0) {
       const response = await fetch(`${getApiHost()}/api/page?path=${url}`);
-      this.page = await response.json();
+      const page = await response.json();
+      console.log(url);
+      console.log(page);
+
+      await helmet(page.meta);
+
+      this.page = page;
     }
   }
 
@@ -40,10 +46,7 @@ export class AppPage {
 
     return (
       <Host>
-        <Helmet>
-          <title>{this.page.meta.data.title}</title>
-        </Helmet>
-        <h1>{this.page.meta.data.title}</h1>
+        <h1>{this.page.meta.title}</h1>
         <div innerHTML={this.page.content}></div>
       </Host>
     );

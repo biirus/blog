@@ -14,8 +14,8 @@ const getStats = (filePath) => ({
 });
 
 const getFileUrl = (filePath) => {
-  return (
-    '/' +
+  return path.join(
+    process.env.PAGES_PREFIX,
     path
       .relative(path.join(process.cwd(), process.env.PAGES_SRC), filePath)
       .replace('.md', '')

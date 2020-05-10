@@ -3,6 +3,7 @@ type FileInfo = {
   title: string;
   url: string;
   tags: string[];
+  description?: string;  
 };
 
 type DirInfo = {
@@ -17,9 +18,5 @@ type Dir = {
 
 type Page = {
   content: string;
-  meta: {
-    content: string;
-    data: FileInfo;
-    isEmpty: boolean;
-  };
+  meta: FileInfo;
 };

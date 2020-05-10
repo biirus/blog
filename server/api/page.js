@@ -17,7 +17,7 @@ marked.setOptions({
 });
 
 renderer.image = (href, title, alt) =>
-  `<img title="${title}" alt="${alt}" src="${href}"/>`;
+  `<app-img title="${title}" alt="${alt}" src="${href}"></app-img>`;
 
 function getPage(pagePath) {
   const parsed = getFileInfo(
@@ -27,7 +27,7 @@ function getPage(pagePath) {
   if (parsed.content) {
     const html = marked(parsed.content);
     return {
-      meta: parsed,
+      meta: parsed.data,
       content: html,
     };
   }
@@ -36,7 +36,7 @@ function getPage(pagePath) {
 }
 
 function handlePageRequest(req, res) {
-  const page = getPage(req.query.path);
+  const page = getPage(req.query.path.replace(process.env.PAGES_PREFIX, ''));
   if (page) {
     return res.json(page);
   }

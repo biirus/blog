@@ -9,6 +9,12 @@ import { MatchResults, } from "@stencil/router";
 export namespace Components {
     interface AppHome {
     }
+    interface AppImg {
+        /**
+          * Image source
+         */
+        "src": string;
+    }
     interface AppNav {
     }
     interface AppPage {
@@ -29,6 +35,12 @@ declare global {
     var HTMLAppHomeElement: {
         prototype: HTMLAppHomeElement;
         new (): HTMLAppHomeElement;
+    };
+    interface HTMLAppImgElement extends Components.AppImg, HTMLStencilElement {
+    }
+    var HTMLAppImgElement: {
+        prototype: HTMLAppImgElement;
+        new (): HTMLAppImgElement;
     };
     interface HTMLAppNavElement extends Components.AppNav, HTMLStencilElement {
     }
@@ -56,6 +68,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "app-home": HTMLAppHomeElement;
+        "app-img": HTMLAppImgElement;
         "app-nav": HTMLAppNavElement;
         "app-page": HTMLAppPageElement;
         "app-profile": HTMLAppProfileElement;
@@ -64,6 +77,12 @@ declare global {
 }
 declare namespace LocalJSX {
     interface AppHome {
+    }
+    interface AppImg {
+        /**
+          * Image source
+         */
+        "src"?: string;
     }
     interface AppNav {
     }
@@ -80,6 +99,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "app-home": AppHome;
+        "app-img": AppImg;
         "app-nav": AppNav;
         "app-page": AppPage;
         "app-profile": AppProfile;
@@ -91,6 +111,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
+            "app-img": LocalJSX.AppImg & JSXBase.HTMLAttributes<HTMLAppImgElement>;
             "app-nav": LocalJSX.AppNav & JSXBase.HTMLAttributes<HTMLAppNavElement>;
             "app-page": LocalJSX.AppPage & JSXBase.HTMLAttributes<HTMLAppPageElement>;
             "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;

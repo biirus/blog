@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
  <url><loc>https://biirus.github.io/</loc></url>
  <url><loc>https://biirus.github.io/profile/stencil</loc></url>
- <url><loc>https://biirus.github.io/ru/home</loc></url>
- <url><loc>https://biirus.github.io/ru/dev/another-test</loc></url>
- <url><loc>https://biirus.github.io/ru/dev/hello-world</loc></url>
+ <url><loc>https://biirus.github.io/post/ru/home</loc></url>
+ <url><loc>https://biirus.github.io/post/ru/dev/another-test</loc></url>
+ <url><loc>https://biirus.github.io/post/ru/dev/hello-world</loc></url>
 </urlset>
