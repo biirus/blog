@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "description": "Ivan Burnaev's personal website",
   "scripts": {
-    "clean": "rm -rf ./server/wwww",
+    "clean": "rm -rf ./server/www && rm -rf ./src/www",
     "prebuild": "npm run clean",
     "build": "NODE_ENV=production node ./scripts/build.js",
     "dev:client": "stencil build --dev --watch --serve",
