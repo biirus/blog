@@ -1,12 +1,11 @@
 import { Component, Host, Prop, h, Watch, State } from '@stencil/core';
 import { MatchResults } from '@stencil/router';
-import { getApiHost } from '../../utils/config';
 import { helmet } from '../../utils/helmet';
 
 @Component({
   tag: 'app-page',
   styleUrl: 'app-page.css',
-  shadow: true,
+  shadow: false,
 })
 export class AppPage {
   @State() url: string;
@@ -28,8 +27,9 @@ export class AppPage {
 
   private async fetchPage(url: string) {
     if (typeof url !== 'undefined' && url.length > 0) {
-      const response = await fetch(`${getApiHost()}/api/page?path=${url}`);
+      const response = await fetch(`/assets/data/pages/${url}.json`);
       const page = await response.json();
+
       console.log(url);
       console.log(page);
 

@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Prop, State, h } from '@stencil/core';
 
 @Component({
   tag: 'app-img',
@@ -7,37 +7,44 @@ import { Component, Prop, h } from '@stencil/core';
 })
 export class AppImg {
   private sizes = [320, 640, 960, 1280, 1920, 2560];
+
+  @State() srcSet: string = '';
+
   /**
    * Image source
    */
   @Prop({ reflect: true }) readonly src: string;
 
-  private isLocalImg() {
-    return /^\/assets\/.*/.test(this.src);
-  }
-
-  private getSrcSet() {
+  componentWillLoad() {
     if (!this.isLocalImg()) {
-      return '';
+      this.cleanSrcSet();
     }
 
     const parts = this.src.split('.');
     const ext = parts.pop();
 
-    return this.sizes
+    this.srcSet = this.sizes
       .map((size) => {
         return `${parts.join('')}-${size}.${ext} ${size}w`;
       })
       .join(', \n');
   }
 
+  private isLocalImg = () => {
+    return /^\/assets\/.*/.test(this.src);
+  };
+
+  private cleanSrcSet = () => {
+    this.srcSet = '';
+  };
+
   render() {
     return (
       <img
         alt="Ferrari"
         src={this.src}
-        srcset={this.getSrcSet()}
-        // sizes="(min-width: 37.5em) 640px, 320px"
+        srcset={this.srcSet}
+        onError={this.cleanSrcSet}
       ></img>
     );
   }

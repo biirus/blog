@@ -14,6 +14,7 @@ module.exports = {
     ecmaVersion: 2018,
   },
   rules: {
+    'function-paren-newline': 'off',
     'implicit-arrow-linebreak': 'off',
     'no-console': 'off',
     'comma-dangle': [

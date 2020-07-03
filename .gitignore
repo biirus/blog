@@ -1,4 +1,6 @@
 dist/
+data/
+www/
 !www/favicon.ico
 
 *~

@@ -21,14 +21,17 @@ const resizeImage = (filePath) => {
       return Promise.resolve();
     }
 
-    const image = sharp(filePath).resize(size);
-    return image.metadata().then(function (metadata) {
-      if (metadata.width > size) {
-        return image.resize(size).toFile(fileName);
-      }
+    const image = sharp(filePath);
+    return image
+      .metadata()
+      .then(function (metadata) {
+        if (metadata.width > size) {
+          return image.resize(size).toFile(fileName);
+        }
 
-      return null;
-    });
+        return null;
+      })
+      .catch(() => {});
   });
 };
 
@@ -38,19 +41,15 @@ function traverseDir(dir) {
 
     if (fs.statSync(filePath).isDirectory()) {
       return traverseDir(filePath);
-    } else {
-      if (shouldConvert(filePath)) {
-        return resizeImage(filePath);
-      }
+    } else if (shouldConvert(filePath)) {
+      return resizeImage(filePath);
     }
     return Promise.resolve();
   });
 }
 
 function resizeImages() {
-  return [path.join(process.cwd(), 'server', 'www', 'assets')].flatMap(
-    traverseDir
-  );
+  return [path.join(process.cwd(), 'www', 'assets')].flatMap(traverseDir);
 }
 
 module.exports = resizeImages;

@@ -9,10 +9,12 @@ export const config: Config = {
   outputTargets: [
     {
       type: 'www',
-      dir: 'server/www',
+      dir: 'www',
       // comment the following line to disable service workers in production
       serviceWorker: null,
       baseUrl: 'https://biirus.github.io',
+      prerenderConfig: './stencil-prerender.config.ts',
+      copy: [{ src: '../data', dest: 'assets/data' }],
     },
   ],
 };
