@@ -5,13 +5,16 @@
   "license": "MIT",
   "description": "Ivan Burnaev's personal website",
   "scripts": {
-    "prebuild": "NODE_ENV=production node ./scripts/pre-build.js",
-    "build": "NODE_ENV=production stencil build --prod --prerender",
-    "postbuild": "NODE_ENV=production node ./scripts/post-build.js",
-    "prestart": "NODE_ENV=development node ./scripts/pre-build.js",
+    "clear": "rm -rf ./www ./data ./dist",
+    "dirs": "mkdir -p data www/assets",
+    "copy": "cp -r data www/assets && cp -r src/assets/* www/assets",
+    "prebuild": "npm run clear && npm run dirs && node ./scripts/build-info.js && node ./scripts/build-pages.js && npm run copy && node ./scripts/optimize-images.js",
+    "build": "NODE_ENV=production stencil build --prerender",
+    "prestart": "npm run prebuild",
     "start": "NODE_ENV=development stencil build --dev --watch --serve",
     "generate": "stencil generate",
-    "postinstall": "cd ./scripts && npm install"
+    "postinstall": "cd ./scripts && npm install",
+    "update-pages": "node scripts/build-pages.js && npm run copy"
   },
   "devDependencies": {
     "@stencil/core": "^1.15.0",

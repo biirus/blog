@@ -10,6 +10,10 @@ export namespace Components {
   interface AppHome {}
   interface AppImg {
     /**
+     * Image alt
+     */
+    alt: string;
+    /**
      * Image source
      */
     src: string;
@@ -64,6 +68,10 @@ declare global {
 declare namespace LocalJSX {
   interface AppHome {}
   interface AppImg {
+    /**
+     * Image alt
+     */
+    alt?: string;
     /**
      * Image source
      */

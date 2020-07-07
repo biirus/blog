@@ -52,4 +52,4 @@ function resizeImages() {
   return [path.join(process.cwd(), 'www', 'assets')].flatMap(traverseDir);
 }
 
-module.exports = resizeImages;
+resizeImages();

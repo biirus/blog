@@ -11,10 +11,10 @@ export const config: Config = {
       type: 'www',
       dir: 'www',
       // comment the following line to disable service workers in production
+      empty: false,
       serviceWorker: null,
-      baseUrl: 'https://biirus.github.io',
+      baseUrl: 'https://biirus.now.sh',
       prerenderConfig: './stencil-prerender.config.ts',
-      copy: [{ src: '../data', dest: 'assets/data' }],
     },
   ],
 };

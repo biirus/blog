@@ -48,4 +48,4 @@ function buildInfo() {
   );
 }
 
-module.exports = buildInfo;
+buildInfo();

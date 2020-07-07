@@ -1,28 +1,33 @@
-/*
-  Global App CSS
-  ----------------------
-  Use this file for styles that should be applied to all components.
-  For example, "font-family" within the "body" selector is a CSS property
-  most apps will want applied to all components.
+@import './reset.css';
 
-  Any global CSS variables should also be applied here.
-*/
+* {
+  box-sizing: border-box;
+}
 
 :root {
-  --text-font: 'Open Sans', sans-serif;
-  --head-font: 'Playfair Display', serif;
+  --text-font: -apple-system, BlinkMacSystemFont, “Segoe UI”, “Roboto”, “Oxygen”,
+    “Ubuntu”, “Cantarell”, “Fira Sans”, “Droid Sans”, “Helvetica Neue”,
+    sans-serif;
 
-  --color: black;
-  --bg-color: white;
+  --head-font: Didot, Georgia, Palatino, serif;
+
+  --color: #0c1110;
+  --accent: #2c4339;
+
+  /* --bg-color: #efefeb; */
+  --bg-color: #f3f4eb;
 }
 
 body {
   margin: 0px;
   padding: 0px;
 
-  font-family: var(--text-font);
   color: var(--color);
-  font-size: 15px;
+  font-family: var(--text-font);
+  font-size: calc(0.35842vw + 0.95296em);
+  /* font-size: 1.125rem; */
+  line-height: calc(1.5em + 0.2vw);
+  font-feature-settings: 'kern' 1, 'liga' 0;
 
   background-color: var(--bg-color);
 }
@@ -33,5 +38,28 @@ h3,
 h4,
 h5,
 h6 {
+  color: var(--accent);
   font-family: var(--head-font);
+}
+
+h1 {
+  font-size: calc(1.625rem + 1.6vw);
+  line-height: 1.2;
+  margin: 0.83em 0;
+}
+
+h2 {
+  font-size: calc(1.375rem + 1.6vw);
+  line-height: 1.2;
+  margin: 0.83em 0;
+}
+
+h3 {
+  font-size: calc(1.5rem + 0.25vw);
+  line-height: 1.2;
+  margin: 0.83em 0;
+}
+
+p {
+  margin: 1em 0;
 }

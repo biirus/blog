@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h, Watch, State } from '@stencil/core';
+import { Component, Prop, h, Watch, State } from '@stencil/core';
 import { MatchResults } from '@stencil/router';
 import { helmet } from '../../utils/helmet';
 
@@ -30,9 +30,6 @@ export class AppPage {
       const response = await fetch(`/assets/data/pages/${url}.json`);
       const page = await response.json();
 
-      console.log(url);
-      console.log(page);
-
       await helmet(page.meta);
 
       this.page = page;
@@ -45,10 +42,12 @@ export class AppPage {
     }
 
     return (
-      <Host>
-        <h1>{this.page.meta.title}</h1>
-        <div innerHTML={this.page.content}></div>
-      </Host>
+      <article>
+        <header>
+          <h1>{this.page.meta.title}</h1>
+        </header>
+        <div class="content" innerHTML={this.page.content}></div>
+      </article>
     );
   }
 }

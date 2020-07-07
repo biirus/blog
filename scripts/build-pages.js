@@ -18,8 +18,9 @@ marked.setOptions({
   xhtml: false,
 });
 
-renderer.image = (href, title, alt) =>
-  `<app-img title="${title}" alt="${alt}" src="${href}"></app-img>`;
+renderer.image = (href, title, alt) => {
+  return `<app-img title="${title}" alt="${alt}" src="${href}"></app-img>`;
+};
 
 function getPage(pagePath) {
   const parsed = getFileInfo(
@@ -60,4 +61,4 @@ function buildPages() {
   });
 }
 
-module.exports = buildPages;
+buildPages();
