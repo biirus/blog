@@ -14,7 +14,9 @@
     "start": "NODE_ENV=development stencil build --dev --watch --serve",
     "generate": "stencil generate",
     "postinstall": "cd ./scripts && npm install",
-    "update-pages": "node scripts/build-pages.js && npm run copy"
+    "update-pages": "node scripts/build-pages.js && npm run copy",
+    "predeploy": "npm run build",
+    "deploy": "vercel"
   },
   "devDependencies": {
     "@stencil/core": "^1.15.0",

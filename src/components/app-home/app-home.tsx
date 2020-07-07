@@ -21,9 +21,12 @@ export class AppHome {
       <div class="app-home">
         {this.pages.map((page) => {
           return (
-            <stencil-route-link url={page.url}>
-              <h1>{page.title}</h1>
-            </stencil-route-link>
+            <div key={page.url}>
+              <stencil-route-link url={page.url}>
+                <h1>{page.title}</h1>
+              </stencil-route-link>
+              <p>{page.description}</p>
+            </div>
           );
         })}
       </div>
