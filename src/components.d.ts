@@ -8,16 +8,6 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import { MatchResults } from '@stencil/router';
 export namespace Components {
   interface AppHome {}
-  interface AppImg {
-    /**
-     * Image alt
-     */
-    alt: string;
-    /**
-     * Image source
-     */
-    src: string;
-  }
   interface AppPage {
     /**
      * Language and Page url come here
@@ -34,11 +24,6 @@ declare global {
   var HTMLAppHomeElement: {
     prototype: HTMLAppHomeElement;
     new (): HTMLAppHomeElement;
-  };
-  interface HTMLAppImgElement extends Components.AppImg, HTMLStencilElement {}
-  var HTMLAppImgElement: {
-    prototype: HTMLAppImgElement;
-    new (): HTMLAppImgElement;
   };
   interface HTMLAppPageElement extends Components.AppPage, HTMLStencilElement {}
   var HTMLAppPageElement: {
@@ -59,7 +44,6 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'app-home': HTMLAppHomeElement;
-    'app-img': HTMLAppImgElement;
     'app-page': HTMLAppPageElement;
     'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;
@@ -67,16 +51,6 @@ declare global {
 }
 declare namespace LocalJSX {
   interface AppHome {}
-  interface AppImg {
-    /**
-     * Image alt
-     */
-    alt?: string;
-    /**
-     * Image source
-     */
-    src?: string;
-  }
   interface AppPage {
     /**
      * Language and Page url come here
@@ -89,7 +63,6 @@ declare namespace LocalJSX {
   interface AppRoot {}
   interface IntrinsicElements {
     'app-home': AppHome;
-    'app-img': AppImg;
     'app-page': AppPage;
     'app-profile': AppProfile;
     'app-root': AppRoot;
@@ -100,7 +73,6 @@ declare module '@stencil/core' {
   export namespace JSX {
     interface IntrinsicElements {
       'app-home': LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
-      'app-img': LocalJSX.AppImg & JSXBase.HTMLAttributes<HTMLAppImgElement>;
       'app-page': LocalJSX.AppPage & JSXBase.HTMLAttributes<HTMLAppPageElement>;
       'app-profile': LocalJSX.AppProfile &
         JSXBase.HTMLAttributes<HTMLAppProfileElement>;

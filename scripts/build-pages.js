@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const marked = require('marked');
 const getFileInfo = require('./lib/get-file-info');
+const renderImage = require('./lib/render-image');
 
 const renderer = new marked.Renderer();
 
@@ -18,9 +19,7 @@ marked.setOptions({
   xhtml: false,
 });
 
-renderer.image = (href, title, alt) => {
-  return `<app-img title="${title}" alt="${alt}" src="${href}"></app-img>`;
-};
+renderer.image = renderImage;
 
 function getPage(pagePath) {
   const parsed = getFileInfo(

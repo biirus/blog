@@ -1,0 +1,58 @@
+:root {
+  --text-font: -apple-system, BlinkMacSystemFont, “Segoe UI”, “Roboto”, “Oxygen”,
+    “Ubuntu”, “Cantarell”, “Fira Sans”, “Droid Sans”, “Helvetica Neue”,
+    sans-serif;
+
+  --head-font: Georgia, Palatino, serif;
+}
+
+body {
+  font-family: var(--text-font);
+  font-size: calc(0.35842vw + 0.95296em);
+  line-height: calc(1.5em + 0.2vw);
+  font-feature-settings: 'kern' 1, 'liga' 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--head-font);
+}
+
+h1 {
+  font-size: calc(1.625rem + 1.6vw);
+  line-height: 1.2;
+  margin: 0.83em 0;
+}
+
+h2 {
+  font-size: calc(1.375rem + 1.6vw);
+  line-height: 1.2;
+  margin: 0.83em 0;
+}
+
+h3 {
+  font-size: calc(1.5rem + 0.25vw);
+  line-height: 1.2;
+  margin: 0.83em 0;
+}
+
+p {
+  margin: 0 0 1em 0;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+  text-decoration: none;
+}

@@ -1,35 +1,16 @@
 @import './reset.css';
-
-* {
-  box-sizing: border-box;
-}
-
-:root {
-  --text-font: -apple-system, BlinkMacSystemFont, “Segoe UI”, “Roboto”, “Oxygen”,
-    “Ubuntu”, “Cantarell”, “Fira Sans”, “Droid Sans”, “Helvetica Neue”,
-    sans-serif;
-
-  --head-font: Didot, Georgia, Palatino, serif;
-
-  --color: #0c1110;
-  --accent: #2c4339;
-
-  /* --bg-color: #efefeb; */
-  --bg-color: #f3f4eb;
-}
+@import './typography.css';
+@import './light-theme.css';
+@import './dark-theme.css';
 
 body {
-  margin: 0px;
-  padding: 0px;
-
   color: var(--color);
-  font-family: var(--text-font);
-  font-size: calc(0.35842vw + 0.95296em);
-  /* font-size: 1.125rem; */
-  line-height: calc(1.5em + 0.2vw);
-  font-feature-settings: 'kern' 1, 'liga' 0;
 
   background-color: var(--bg-color);
+}
+
+a {
+  color: var(--accent);
 }
 
 h1,
@@ -38,28 +19,6 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--accent);
+  color: var(--primary);
   font-family: var(--head-font);
-}
-
-h1 {
-  font-size: calc(1.625rem + 1.6vw);
-  line-height: 1.2;
-  margin: 0.83em 0;
-}
-
-h2 {
-  font-size: calc(1.375rem + 1.6vw);
-  line-height: 1.2;
-  margin: 0.83em 0;
-}
-
-h3 {
-  font-size: calc(1.5rem + 0.25vw);
-  line-height: 1.2;
-  margin: 0.83em 0;
-}
-
-p {
-  margin: 1em 0;
 }

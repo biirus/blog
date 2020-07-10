@@ -1,0 +1,10 @@
+html[theme='dark'] {
+  --color: #a6a6a6;
+  --accent: #b38463;
+  --primary: #c7c199;
+  --bg-color: #212322;
+}
+
+html[theme='dark'] img {
+  filter: brightness(0.9) contrast(1.05);
+}
