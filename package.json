@@ -16,7 +16,7 @@
     "postinstall": "cd ./scripts && npm install",
     "update-pages": "node scripts/build-pages.js && npm run copy",
     "predeploy": "npm run build",
-    "deploy": "vercel"
+    "deploy": "vercel --prod"
   },
   "devDependencies": {
     "@stencil/core": "^1.15.0",

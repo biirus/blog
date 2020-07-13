@@ -18,6 +18,7 @@ export namespace Components {
     match: MatchResults;
   }
   interface AppRoot {}
+  interface ThemeControl {}
 }
 declare global {
   interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {}
@@ -42,11 +43,19 @@ declare global {
     prototype: HTMLAppRootElement;
     new (): HTMLAppRootElement;
   };
+  interface HTMLThemeControlElement
+    extends Components.ThemeControl,
+      HTMLStencilElement {}
+  var HTMLThemeControlElement: {
+    prototype: HTMLThemeControlElement;
+    new (): HTMLThemeControlElement;
+  };
   interface HTMLElementTagNameMap {
     'app-home': HTMLAppHomeElement;
     'app-page': HTMLAppPageElement;
     'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;
+    'theme-control': HTMLThemeControlElement;
   }
 }
 declare namespace LocalJSX {
@@ -61,11 +70,13 @@ declare namespace LocalJSX {
     match?: MatchResults;
   }
   interface AppRoot {}
+  interface ThemeControl {}
   interface IntrinsicElements {
     'app-home': AppHome;
     'app-page': AppPage;
     'app-profile': AppProfile;
     'app-root': AppRoot;
+    'theme-control': ThemeControl;
   }
 }
 export { LocalJSX as JSX };
@@ -77,6 +88,8 @@ declare module '@stencil/core' {
       'app-profile': LocalJSX.AppProfile &
         JSXBase.HTMLAttributes<HTMLAppProfileElement>;
       'app-root': LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+      'theme-control': LocalJSX.ThemeControl &
+        JSXBase.HTMLAttributes<HTMLThemeControlElement>;
     }
   }
 }

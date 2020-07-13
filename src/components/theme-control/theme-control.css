@@ -1,0 +1,48 @@
+:host {
+  --size: 16px;
+
+  display: block;
+  cursor: pointer;
+}
+
+.track {
+  --delta: 10px;
+  --height: calc(var(--size) + var(--delta));
+
+  width: calc(var(--height) * 2);
+  border-radius: calc(var(--height) / 2);
+  background-color: var(--accent);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.slide {
+  --shift: 0;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  width: 150%;
+  height: var(--height);
+  transform: translateX(calc(var(--height) * var(--shift) * -1));
+  transition: all 0.15s;
+
+  font-size: calc(var(--height) / 2);
+  line-height: 1;
+}
+
+.slide[data-count='0'] {
+  --shift: 0;
+}
+
+.slide[data-count='1'] {
+  --shift: 1;
+}
+
+.toggle {
+  width: var(--size);
+  height: var(--size);
+  border-radius: calc(var(--size) / 2);
+  background-color: var(--primary);
+}
