@@ -4,7 +4,7 @@ export const config: PrerenderConfig = {
   staticSite: false,
   hydrateOptions: () => {
     return {
-      excludeComponents: ['app-page'],
+      staticComponents: ['app-page'],
     };
   },
 };

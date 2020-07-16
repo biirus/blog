@@ -33,11 +33,11 @@
 }
 
 .moon {
-  left: calc(var(--delta) / 2);
+  left: calc(var(--delta) / 2 + 2);
 }
 
 .sun {
-  right: calc(var(--delta) / 2);
+  right: calc(var(--delta) / 2 + 2);
 }
 
 .toggle {
