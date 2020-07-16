@@ -1,48 +1,81 @@
 :host {
-  --size: 16px;
+  --size: 24px;
 
   display: block;
   cursor: pointer;
+  appearance: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 
 .track {
+  --shift: 0;
   --delta: 10px;
   --height: calc(var(--size) + var(--delta));
 
+  position: relative;
   width: calc(var(--height) * 2);
+  height: var(--height);
+  padding: 0 calc(var(--delta) / 2);
   border-radius: calc(var(--height) / 2);
   background-color: var(--accent);
   box-sizing: border-box;
   overflow: hidden;
-}
-
-.slide {
-  --shift: 0;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
-  justify-items: center;
-  width: 150%;
-  height: var(--height);
-  transform: translateX(calc(var(--height) * var(--shift) * -1));
-  transition: all 0.15s;
 
   font-size: calc(var(--height) / 2);
-  line-height: 1;
+  line-height: var(--height);
 }
 
-.slide[data-count='0'] {
-  --shift: 0;
+.icon {
+  position: absolute;
+  top: 0;
 }
 
-.slide[data-count='1'] {
-  --shift: 1;
+.moon {
+  left: calc(var(--delta) / 2);
+}
+
+.sun {
+  right: calc(var(--delta) / 2);
 }
 
 .toggle {
+  position: absolute;
+  top: calc(var(--delta) / 2);
+  left: calc(var(--delta) / 2);
   width: var(--size);
   height: var(--size);
+  z-index: 1;
+  transition: all 0.2s ease-in-out;
+}
+
+.toggle::before {
+  --extra: calc(var(--size) / 2 * -1);
+
+  display: block;
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
   border-radius: calc(var(--size) / 2);
   background-color: var(--primary);
+  transition: all 0.2s ease-in-out;
+}
+
+.toggle.on {
+  left: calc(var(--size) * 2 - var(--delta));
+}
+
+.toggle.pressed::before {
+  left: 0;
+  right: var(--extra);
+}
+
+.toggle.on.pressed::before {
+  left: var(--extra);
+  right: 0;
 }

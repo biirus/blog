@@ -6,6 +6,7 @@ import { Component, Host, h, Build, State, Watch } from '@stencil/core';
   shadow: true,
 })
 export class ThemeControl {
+  @State() isPressed: boolean = false;
   @State() currentTheme: string = 'light';
 
   @Watch('currentTheme')
@@ -49,15 +50,31 @@ export class ThemeControl {
   //   localStorage.removeItem('theme');
   // };
 
+  private pressed = (isPressed) => () => {
+    this.isPressed = isPressed;
+  };
+
   render() {
     return (
       <Host>
-        <div class="track" onClick={this.toggleTheme}>
-          <div class="slide" data-count={this.currentTheme === 'light' ? 1 : 0}>
-            🌙
-            <div class="toggle"></div>
-            🌕
-          </div>
+        <div
+          class="track"
+          onClick={this.toggleTheme}
+          onTouchStart={this.pressed(true)}
+          onTouchEnd={this.pressed(false)}
+          onMouseDown={this.pressed(true)}
+          onMouseUp={this.pressed(false)}
+          onMouseLeave={this.pressed(false)}
+        >
+          <div class="icon moon">🌙</div>
+          <div
+            class={{
+              toggle: true,
+              pressed: this.isPressed,
+              on: this.currentTheme === 'dark',
+            }}
+          ></div>
+          <div class="icon sun">🌕</div>
         </div>
       </Host>
     );

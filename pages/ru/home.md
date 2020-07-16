@@ -15,7 +15,7 @@ We chose this approach because it seems to have fewer major problems. (Approach 
 
 You and I can make this even better together. The box below uses the declaration above and should render in your system’s UI font. If it doesn’t or if you have any thoughts, please leave a comment!
 
-![Alt](/assets/island.jpg 'title')
+![Alt](/assets/island.jpg 'extra')
 
 We chose this approach because it seems to have fewer major problems. (Approach A fails in mobile browsers in ways that are unacceptable. Approach B fails, too, but less often and with fewer consequences. Your mileage may vary.)
 

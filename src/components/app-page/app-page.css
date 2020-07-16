@@ -1,0 +1,4 @@
+article img {
+  width: 100%; /* or max-width: 100%; */
+  height: auto;
+}
