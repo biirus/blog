@@ -1,5 +1,5 @@
 :host {
-  --size: 24px;
+  --size: calc(1.2rem + 0.2vw);
 
   display: block;
   cursor: pointer;
@@ -11,7 +11,7 @@
 
 .track {
   --shift: 0;
-  --delta: 10px;
+  --delta: calc(var(--size) / 2.5);
   --height: calc(var(--size) + var(--delta));
 
   position: relative;
@@ -33,11 +33,11 @@
 }
 
 .moon {
-  left: calc(var(--delta) / 2 + 2);
+  left: calc(var(--delta) / 2);
 }
 
 .sun {
-  right: calc(var(--delta) / 2 + 2);
+  right: calc(var(--delta) / 2);
 }
 
 .toggle {

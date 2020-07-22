@@ -27,16 +27,23 @@ export class AppPage {
 
   private async fetchPage(url: string) {
     if (typeof url !== 'undefined' && url.length > 0) {
-      const response = await fetch(`/assets/data/pages/${url}.json`);
-      const page = await response.json();
+      try {
+        const response = await fetch(`/assets/data/pages${url}.json`);
+        const page = await response.json();
+        await helmet(page.meta);
 
-      await helmet(page.meta);
-
-      this.page = page;
+        this.page = page;
+      } catch (e) {
+        this.page = null;
+      }
     }
   }
 
   render() {
+    if (this.page === null) {
+      return <app-not-found></app-not-found>;
+    }
+
     if (!Boolean(this.page)) {
       return null;
     }

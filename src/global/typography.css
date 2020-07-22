@@ -34,14 +34,17 @@ h2 {
   margin: 0.83em 0;
 }
 
-h3 {
+h3,
+h4,
+h5,
+h6 {
   font-size: calc(1.5rem + 0.25vw);
   line-height: 1.2;
   margin: 0.83em 0;
 }
 
 p {
-  margin: 0 0 1em 0;
+  margin: 0 0 2em 0;
 }
 
 a:hover {

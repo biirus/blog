@@ -11,6 +11,8 @@ const getFileUrl = (filePath) =>
       .replace('.md', '')
   );
 
+const removeDraft = (fileInfo) => !fileInfo.draft;
+
 const sortByDate = (fileA, fileB) => {
   // dir always goes last
   if (fileB.isDir || fileA.date < fileB.date) {
@@ -31,6 +33,7 @@ function getPages(dir) {
         url: getFileUrl(filePath),
       };
     })
+    .filter(removeDraft)
     .sort(sortByDate);
 }
 

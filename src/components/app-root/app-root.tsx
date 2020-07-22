@@ -22,6 +22,7 @@ export class AppRoot {
             <stencil-route-switch scrollTopOffset={0.001}>
               <stencil-route url="/" component="app-home" exact={true} />
               <stencil-route group="ru" url="/ru/:page*" component="app-page" />
+              <stencil-route component="app-not-found" />
             </stencil-route-switch>
           </stencil-router>
         </main>

@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import { MatchResults } from '@stencil/router';
 export namespace Components {
   interface AppHome {}
+  interface AppNotFound {}
   interface AppPage {
     /**
      * Language and Page url come here
@@ -25,6 +26,13 @@ declare global {
   var HTMLAppHomeElement: {
     prototype: HTMLAppHomeElement;
     new (): HTMLAppHomeElement;
+  };
+  interface HTMLAppNotFoundElement
+    extends Components.AppNotFound,
+      HTMLStencilElement {}
+  var HTMLAppNotFoundElement: {
+    prototype: HTMLAppNotFoundElement;
+    new (): HTMLAppNotFoundElement;
   };
   interface HTMLAppPageElement extends Components.AppPage, HTMLStencilElement {}
   var HTMLAppPageElement: {
@@ -52,6 +60,7 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'app-home': HTMLAppHomeElement;
+    'app-not-found': HTMLAppNotFoundElement;
     'app-page': HTMLAppPageElement;
     'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;
@@ -60,6 +69,7 @@ declare global {
 }
 declare namespace LocalJSX {
   interface AppHome {}
+  interface AppNotFound {}
   interface AppPage {
     /**
      * Language and Page url come here
@@ -73,6 +83,7 @@ declare namespace LocalJSX {
   interface ThemeControl {}
   interface IntrinsicElements {
     'app-home': AppHome;
+    'app-not-found': AppNotFound;
     'app-page': AppPage;
     'app-profile': AppProfile;
     'app-root': AppRoot;
@@ -84,6 +95,8 @@ declare module '@stencil/core' {
   export namespace JSX {
     interface IntrinsicElements {
       'app-home': LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
+      'app-not-found': LocalJSX.AppNotFound &
+        JSXBase.HTMLAttributes<HTMLAppNotFoundElement>;
       'app-page': LocalJSX.AppPage & JSXBase.HTMLAttributes<HTMLAppPageElement>;
       'app-profile': LocalJSX.AppProfile &
         JSXBase.HTMLAttributes<HTMLAppProfileElement>;
