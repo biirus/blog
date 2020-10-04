@@ -16,7 +16,9 @@ export class AppNotFound {
     return (
       <div>
         <h1>Page not found</h1>
-        <video muted autoplay loop playsinline src="/assets/404.mp4"></video>
+        <video loop muted autoplay playsinline>
+          <source src="/assets/404.mp4" type="video/mp4" />
+        </video>
       </div>
     );
   }

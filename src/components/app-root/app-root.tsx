@@ -19,9 +19,22 @@ export class AppRoot {
 
         <main>
           <stencil-router>
-            <stencil-route-switch scrollTopOffset={0.001}>
+            <stencil-route-switch scrollTopOffset={0}>
               <stencil-route url="/" component="app-home" exact={true} />
-              <stencil-route group="ru" url="/ru/:page*" component="app-page" />
+
+              <stencil-route
+                exact={true}
+                url={['/ru/', '/ru']}
+                routeRender={() => <stencil-router-redirect url="/" />}
+              />
+
+              <stencil-route
+                url="/ru/:page"
+                routeRender={({ match }) => (
+                  <app-page url={match!.url}></app-page>
+                )}
+              />
+
               <stencil-route component="app-not-found" />
             </stencil-route-switch>
           </stencil-router>

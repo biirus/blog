@@ -5,6 +5,8 @@ module.exports = {
   root: true,
   extends: ['plugin:@stencil/recommended'],
   rules: {
+    '@stencil/strict-boolean-conditions': 'off',
+    'react/jsx-no-bind': 'off',
     'comma-dangle': [
       'error',
       {

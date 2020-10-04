@@ -1,5 +1,4 @@
-import { Component, Prop, h, Watch, State } from '@stencil/core';
-import { MatchResults } from '@stencil/router';
+import { Component, Prop, h, State } from '@stencil/core';
 import { helmet } from '../../utils/helmet';
 
 @Component({
@@ -8,21 +7,15 @@ import { helmet } from '../../utils/helmet';
   shadow: false,
 })
 export class AppPage {
-  @State() url: string;
   @State() page: Page;
 
   /**
    * Language and Page url come here
    */
-  @Prop() match: MatchResults;
-
-  @Watch('match')
-  matchWatcher() {
-    this.fetchPage(this.match?.url);
-  }
+  @Prop() url: string;
 
   async componentWillLoad() {
-    await this.fetchPage(this.match?.url);
+    await this.fetchPage(this.url);
   }
 
   private async fetchPage(url: string) {
@@ -44,7 +37,7 @@ export class AppPage {
       return <app-not-found></app-not-found>;
     }
 
-    if (!Boolean(this.page)) {
+    if (!this.page) {
       return null;
     }
 

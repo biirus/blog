@@ -13,7 +13,7 @@ export namespace Components {
     /**
      * Language and Page url come here
      */
-    match: MatchResults;
+    url: string;
   }
   interface AppProfile {
     match: MatchResults;
@@ -74,7 +74,7 @@ declare namespace LocalJSX {
     /**
      * Language and Page url come here
      */
-    match?: MatchResults;
+    url?: string;
   }
   interface AppProfile {
     match?: MatchResults;

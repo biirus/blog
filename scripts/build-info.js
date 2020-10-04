@@ -1,4 +1,5 @@
 require('./config');
+
 const fs = require('fs');
 const path = require('path');
 const getFileInfo = require('./lib/get-file-info');
@@ -11,7 +12,7 @@ const getFileUrl = (filePath) =>
       .replace('.md', '')
   );
 
-const removeDraft = (fileInfo) => !fileInfo.draft;
+const hideDraft = (fileInfo) => !fileInfo.draft;
 
 const sortByDate = (fileA, fileB) => {
   // dir always goes last
@@ -22,33 +23,40 @@ const sortByDate = (fileA, fileB) => {
   return fileA.date === fileB.date ? 0 : 1;
 };
 
-function getPages(dir) {
+function getFileDescription(dir) {
+  return (file) => {
+    const filePath = path.join(dir, file);
+
+    return {
+      ...getFileInfo(filePath).data,
+      url: getFileUrl(filePath),
+    };
+  };
+}
+
+function getPages(lang) {
+  const dir = path.join(process.cwd(), process.env.PAGES, lang);
+
   return fs
     .readdirSync(dir)
-    .map((file) => {
-      const filePath = path.join(dir, file);
-
-      return {
-        ...getFileInfo(filePath).data,
-        url: getFileUrl(filePath),
-      };
-    })
-    .filter(removeDraft)
+    .map(getFileDescription(dir))
+    .filter(hideDraft)
     .sort(sortByDate);
 }
 
-function buildInfo() {
-  const availableLangs = ['ru'];
+function buildStructure(langs) {
+  return Object.fromEntries(langs.map((lang) => [lang, getPages(lang)]));
+}
 
-  const pagesStructure = availableLangs.reduce((acc, lang) => {
-    acc[lang] = getPages(path.join(process.cwd(), process.env.PAGES, lang));
-    return acc;
-  }, {});
-
+function saveFile(structure) {
   fs.writeFileSync(
     path.join(process.cwd(), 'data/info.json'),
-    JSON.stringify(pagesStructure, null, 2)
+    JSON.stringify(structure, null, 2)
   );
+}
+
+function buildInfo() {
+  saveFile(buildStructure(['ru']));
 }
 
 buildInfo();

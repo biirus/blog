@@ -5,8 +5,9 @@
 
 body {
   color: var(--color);
-
   background-color: var(--bg-color);
+
+  transition: background-color 300ms ease, color 300ms ease;
 }
 
 a {
