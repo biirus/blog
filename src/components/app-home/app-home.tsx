@@ -1,16 +1,5 @@
 import { Component, h, State } from '@stencil/core';
 
-async function loadPages(pages: FileInfo[]) {
-  const [page, ...rest] = pages;
-
-  if (!page) {
-    return;
-  }
-
-  await fetch(`/assets/data/pages${page.url}.json`);
-  loadPages(rest);
-}
-
 @Component({
   tag: 'app-home',
   styleUrl: 'app-home.css',
@@ -24,10 +13,6 @@ export class AppHome {
       const response = await fetch(`/assets/data/info.json`);
       const languages = await response.json();
       this.pages = languages.ru;
-
-      setTimeout(() => {
-        loadPages(this.pages);
-      }, 3000);
     } catch (e) {}
   }
 

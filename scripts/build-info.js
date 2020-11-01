@@ -16,7 +16,7 @@ const hideDraft = (fileInfo) => !fileInfo.draft;
 
 const sortByDate = (fileA, fileB) => {
   // dir always goes last
-  if (fileB.isDir || fileA.date < fileB.date) {
+  if (fileB.isDir || fileB.date < fileA.date) {
     return -1;
   }
 
